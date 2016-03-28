@@ -15,22 +15,23 @@ function fetchJSONFile(path, callback) {
     httpRequest.send();
 }
 
+var cars;
+var drivers;
+
 // this requests the file and executes a callback with the parsed result once
 //   it is available
 fetchJSONFile('/resources/data.json', function (data) {
-    // do something with your data
-
-    for (var i = 0; i < data.cars.length; i++) {
-
-    }
-
-    console.log(data);
+    cars = data.cars;
+    drivers = data.drivers;
+    console.log(cars);
+    console.log(drivers);
+    console.log(cars[2].pos.lat);
 });
 
 /**
  * LEAFLET
  */
-var map = L.map('map').setView([53.8999, 27.5566], 12);
+var map = L.map('map').setView([53.8999, 27.5566], 11);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {
     foo: 'bar',
@@ -38,9 +39,19 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {
     maxZoom: 18
 }).addTo(map);
 
+//function markers() {
+//    var mark = L.marker([cars[0].pos.lat, cars[0].pos.lng]).addTo(map);
+//}
+//
+//var marker0 = markers();
+
+console.log(cars);
+console.log(drivers);
+
 var marker1 = L.marker([53.9, 27.6]).addTo(map);
-marker1.bindPopup('<b>Yo-yo</b>');
+marker1.bindPopup('');
 marker1.on('click', function (e) {
     marker1.getPopup().setContent('<b>Yo-yo</b>');
 })
 
+setTimeout('', 3000);
