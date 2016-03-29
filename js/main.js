@@ -74,8 +74,7 @@ window.onload = function () {
                 } else {
                     h = date.getHours();
                 }
-                var result = d + '.' + m + '.' + y + ' ' + h + ':' + min + ':' + s;
-                return result;
+                return d + '.' + m + '.' + y + ' ' + h + ':' + min + ':' + s;
             }
 
             function marker(param) {
