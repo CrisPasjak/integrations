@@ -34,8 +34,8 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Markers
-window.onload = function() {
-    setTimeout(function() {
+window.onload = function () {
+    setTimeout(function () {
         fetchJSONFile('/resources/data.json', function (data) {
             cars = data.cars;
             drivers = data.drivers;
@@ -45,7 +45,7 @@ window.onload = function() {
             function marker(param) {
                 var marker1;
 
-                if(cars[param].pos != undefined) {
+                if (cars[param].pos != undefined) {
                     marker1 = L.marker([cars[param].pos.lat, cars[param].pos.lng]).addTo(map);
 
                     marker1.bindPopup('');
@@ -65,8 +65,8 @@ window.onload = function() {
                     marker1.on('click', function (e) {
                         marker1.getPopup().setContent('<b>' + cars[param].name + '<br>' + date + '<br>' + cars[param].pos.s + ' км/ч' + driverInfo() +
                             '</b>'
-                        )
-                        ;
+                        );
+                        map.setView([cars[param].pos.lat, cars[param].pos.lng], 11);
                     })
                 }
             }
@@ -76,5 +76,5 @@ window.onload = function() {
                 console.log(cars[i]);
             }
         });
-    },3000);
+    }, 3000);
 }
