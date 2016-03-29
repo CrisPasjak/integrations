@@ -13,7 +13,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {
 }).addTo(map);
 
 // Markers
-function m1() {
+function marker01() {
     var marker1 = L.marker([cars[0].pos.lat, cars[0].pos.lng]).addTo(map);
     marker1.bindPopup('');
     var date = new Date(cars[0].pos.t);
@@ -34,9 +34,9 @@ function m1() {
         ;
     })
 }
-setTimeout(m1, 3000);
+setTimeout(marker01, 3000);
 
-function m2() {
+function marker02() {
     var marker2 = L.marker([cars[1].pos.lat, cars[1].pos.lng]).addTo(map);
     marker2.bindPopup('');
     var date = new Date(cars[1].pos.t);
@@ -54,9 +54,9 @@ function m2() {
         marker2.getPopup().setContent('<b>' + cars[1].name + '<br>' + 'time' + '<br>' + cars[1].pos.s + ' км/ч' + dr() + '</b>');
     })
 }
-setTimeout(m2, 6000);
+setTimeout(marker02, 6000);
 
-function m(param) {
+function marker(param) {
     var marker1 = L.marker([cars[param].pos.lat, cars[param].pos.lng]).addTo(map);
     marker1.bindPopup('');
     var date = new Date(cars[param].pos.t);
@@ -77,4 +77,4 @@ function m(param) {
         ;
     })
 }
-setTimeout(m(2), 9000);
+setTimeout(marker(2), 9000);
