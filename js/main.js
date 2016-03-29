@@ -42,6 +42,42 @@ window.onload = function () {
             console.log(cars);
             console.log(drivers);
 
+            function newDate(date) {
+                var y = date.getFullYear();
+                var m;
+                if (date.getMonth() < 9) {
+                    m = '0' + (date.getMonth() + 1);
+                } else {
+                    m = date.getMonth() + 1;
+                }
+                var d;
+                if (date.getDate() < 10) {
+                    d = '0' + date.getDate();
+                } else {
+                    d = date.getDate();
+                }
+                var s;
+                if (date.getSeconds() < 10) {
+                    s = '0' + date.getSeconds();
+                } else {
+                    s = date.getSeconds();
+                }
+                var min;
+                if (date.getMinutes() < 10) {
+                    min = '0' + date.getMinutes();
+                } else {
+                    min = date.getMinutes();
+                }
+                var h;
+                if (date.getHours() < 10) {
+                    h = '0' + date.getHours();
+                } else {
+                    h = date.getHours();
+                }
+                var result = d + '.' + m + '.' + y + ' ' + h + ':' + min + ':' + s;
+                return result;
+            }
+
             function marker(param) {
                 var marker1;
 
@@ -50,6 +86,8 @@ window.onload = function () {
 
                     marker1.bindPopup('');
                     var date = new Date(cars[param].pos.t);
+                    var time = newDate(date);
+                    console.log(time);
 
                     function driverInfo() {
                         if (cars[param].driverId != undefined) {
@@ -63,7 +101,7 @@ window.onload = function () {
                     }
 
                     marker1.on('click', function (e) {
-                        marker1.getPopup().setContent('<b>' + cars[param].name + '<br>' + date + '<br>' + cars[param].pos.s + ' км/ч' + driverInfo() +
+                        marker1.getPopup().setContent('<b>' + cars[param].name + '<br>' + time + '<br>' + cars[param].pos.s + ' км/ч' + driverInfo() +
                             '</b>'
                         );
                         map.setView([cars[param].pos.lat, cars[param].pos.lng], 11);
