@@ -42,7 +42,7 @@ window.onload = function () {
             console.log(cars);
             console.log(drivers);
 
-            function newDate(date) {
+            function formatedDate(date) {
                 var y = date.getFullYear();
                 var m;
                 if (date.getMonth() < 9) {
@@ -86,8 +86,7 @@ window.onload = function () {
 
                     marker1.bindPopup('');
                     var date = new Date(cars[param].pos.t);
-                    var time = newDate(date);
-                    console.log(time);
+                    var newDate = formatedDate(date);
 
                     function driverInfo() {
                         if (cars[param].driverId != undefined) {
@@ -101,7 +100,7 @@ window.onload = function () {
                     }
 
                     marker1.on('click', function (e) {
-                        marker1.getPopup().setContent('<b>' + cars[param].name + '<br>' + time + '<br>' + cars[param].pos.s + ' км/ч' + driverInfo() +
+                        marker1.getPopup().setContent('<b>' + cars[param].name + '<br>' + newDate + '<br>' + cars[param].pos.s + ' км/ч' + driverInfo() +
                             '</b>'
                         );
                         map.setView([cars[param].pos.lat, cars[param].pos.lng], 11);
@@ -116,3 +115,8 @@ window.onload = function () {
         });
     }, 3000);
 }
+
+/**
+ * SEARCH
+ */
+
