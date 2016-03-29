@@ -10,6 +10,7 @@ table {
     width: 25%;
     height: 100%;
     background: #888888;
+    position: absolute;
     margin: 0;
     padding: 0;
 }
