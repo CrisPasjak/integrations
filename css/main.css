@@ -1,25 +1,57 @@
 html, body {
     margin: 0;
+    background-color: #bbbbbb;
 }
 
 table {
     height: 100%;
+    width: 100%;
 }
 
-#search {
+td, hr {
+    width: 100%;
+}
+
+input {
+    width: 90%;
+    height: 25px;
+    font-size: medium;
+}
+
+b {
+    font-size: medium;
+}
+
+p {
+    font-size: small;
+    color: rgb(93, 93, 93);
+}
+
+#count {
+    font-size: small;
+    color: rgb(93, 93, 93);
+}
+
+#filter {
     width: 25%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #bbbbbb;
+}
+
+#map {
+    width: 75%;
     height: 100%;
     background: #888888;
     position: absolute;
     margin: 0;
     padding: 0;
-}
-
-#map {
-    width: 100%;
-    height: 100%;
-    background: #888888;
-    position: fixed;
-    margin: 0;
-    padding: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 25%;
 }
