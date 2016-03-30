@@ -1,6 +1,6 @@
 html, body {
     margin: 0;
-    background-color: #bbbbbb;
+    background-color: #95b6d8;
 }
 
 table {
@@ -20,16 +20,18 @@ input {
 
 b {
     font-size: medium;
+    color: #ffffff;
 }
 
 p {
+    font: 16pt sans-serif;
     font-size: small;
-    color: rgb(93, 93, 93);
+    color: #356fff;
 }
 
 #count {
     font-size: small;
-    color: rgb(93, 93, 93);
+    color: #356fff;
 }
 
 #filter {
@@ -40,13 +42,13 @@ p {
     left: 0;
     top: 0;
     bottom: 0;
-    background-color: #bbbbbb;
+    background-color: #95b6d8;
 }
 
 #map {
     width: 75%;
     height: 100%;
-    background: #888888;
+    background: #95b6d8;
     position: absolute;
     margin: 0;
     padding: 0;

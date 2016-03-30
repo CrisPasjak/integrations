@@ -123,8 +123,9 @@ window.onload = function () {
                     var printedDateElse = '';
                     if (obj[i].pos != undefined) {
                         printedDateElse = formatedDate(new Date(obj[i].pos.t))
+                        obj[i].pos
                     }
-                    s = s + '<b>' + obj[i].name + '</b><br><p>' + printedDateElse + '</p><hr>';
+                    s = s + '<p><b>' + obj[i].name + '</b></p><p>' + printedDateElse + '</p><hr>';
                 }
 
                 t.innerHTML = s;
@@ -143,8 +144,23 @@ window.onload = function () {
 
         // Function for searching matches and adding car's Id to arrayOfNumber
         function searchMatches(obj, arr, input) {
+            var result = input.value;
+            if (result.charAt(0) === ' ' && result.charAt(result.length-1) === ' ' && result.length > 1) {
+                console.log(result);
+                result = input.value.substring(1, result.length-1);
+                console.log(result+'.');
+            } else if (result.charAt(0) === ' '){
+                console.log(result);
+                result = input.value.substring(1);
+                console.log(result+'.');
+            } else if (result.charAt(result.length-1) === ' '){
+                console.log(result);
+                result = input.value.substring(0, result.length-1);
+                console.log(result+'.');
+            }
+            console.log('answer - .' + result+'.');
             for (var i = 0; i < obj.length; i++) {
-                if (obj[i].name.toLowerCase().match(input.value.toLowerCase())) {
+                if (obj[i].name.toLowerCase().match(result.toLowerCase())) {
                     arr.push(obj[i].id);
                 }
             }
@@ -176,7 +192,7 @@ window.onload = function () {
                     if (arr[k].pos != undefined) {
                         printedDate = formatedDate(new Date(arr[k].pos.t))
                     }
-                    s = s + '<b>' + arr[k].name + '</b><br>' + printedDate + '<hr>';
+                    s = s + '<p><b>' + arr[k].name + '</b></p><br>' + printedDate + '<hr>';
                 }
 
                 t.innerHTML = s;
