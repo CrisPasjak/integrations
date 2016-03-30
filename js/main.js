@@ -189,7 +189,7 @@ window.onload = function () {
         }
 
         // Function for delete old markers and adding new markers and positions
-        function drawMatches(arr, arr2, t, s, ct) {
+        function drawMatches(arr, arr2, t, s, ct, obj) {
             var count = 0;
 
             if (arr.length > 0) {
@@ -209,7 +209,7 @@ window.onload = function () {
                 }
 
                 if (count < 6) {
-                    ct.innerHTML = 'Показано ' + count + ' из 6 объектов';
+                    ct.innerHTML = 'Показано ' + count + ' из ' + obj.length + ' объектов';
                 } else if (count = 6) {
                     ct.innerHTML = 'Показаны все объекты';
                 }
@@ -262,7 +262,7 @@ window.onload = function () {
 
                 prepareMatches(arrayOfNumber, arrayOfCars, text, countText);
 
-                array = drawMatches(arrayOfCars, array, text, string, countText);
+                array = drawMatches(arrayOfCars, array, text, string, countText, cars);
 
                 choose(array);
             })
