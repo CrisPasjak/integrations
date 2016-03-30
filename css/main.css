@@ -23,13 +23,8 @@ b {
     color: #ffffff;
 }
 
-p {
-    font: 16pt sans-serif;
-    font-size: small;
-    color: #356fff;
-}
-
 #count {
+    font: 16pt sans-serif;
     font-size: small;
     color: #356fff;
 }
@@ -43,6 +38,9 @@ p {
     top: 0;
     bottom: 0;
     background-color: #95b6d8;
+    font: 16pt sans-serif;
+    font-size: small;
+    color: #356fff;
 }
 
 #map {
