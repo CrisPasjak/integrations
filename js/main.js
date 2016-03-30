@@ -128,6 +128,7 @@ window.onload = function () {
             cars = data.cars;
             drivers = data.drivers;
 
+            // If input is empty, all markers and positions was added
             if (mySearchInput.value === '') {
                 for (var i = 0; i < cars.length; i++) {
                     marker(i);
@@ -143,10 +144,12 @@ window.onload = function () {
                 string = '';
             }
 
+            // Function for keyListener in input
             mySearchInput.addEventListener('keyup', function() {
                 var arrayOfNumber = new Array();
                 var arrayOfCars = new Array();
 
+                // Searching matches and adding car's Id to arrayOfNumber
                 for (var i = 0; i < cars.length; i++) {
                     console.log(cars);
                     if (cars[i].name.toLowerCase().match(mySearchInput.value.toLowerCase())) {
@@ -154,8 +157,7 @@ window.onload = function () {
                     }
                 }
 
-                console.log(arrayOfNumber);
-
+                // Adding cars to arrayOfCars
                 if (arrayOfNumber.length > 0) {
                     for (var j = 0; j < arrayOfNumber.length; j++) {
                         arrayOfCars.push(cars[arrayOfNumber[j]-1]);
@@ -166,8 +168,7 @@ window.onload = function () {
                     text.innerHTML = 'Нет совпадений';
                 }
 
-                console.log(arrayOfCars);
-
+                // Delete old markers and adding new markers and positions
                 if (arrayOfCars.length > 0) {
 
                     deleteMarkers();
