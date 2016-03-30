@@ -114,6 +114,24 @@ window.onload = function () {
             }
         }
 
+        // Function for the first adding markers and positions, if input is empty
+        function firstDraw(input, obj, t, s) {
+            if (input.value === '') {
+                for (var i = 0; i < obj.length; i++) {
+                    marker(i);
+
+                    var printedDateElse = '';
+                    if (obj[i].pos != undefined) {
+                        printedDateElse = formatedDate(new Date(obj[i].pos.t))
+                    }
+                    s = s + '<b>' + obj[i].name + '</b><br><p>' + printedDateElse + '</p><hr>';
+                }
+
+                t.innerHTML = s;
+                s = '';
+            }
+        }
+
         // Function for delete all markers
         function deleteMarkers() {
             for (var l = 0; l < allMarkers.length; l++) {
@@ -123,71 +141,68 @@ window.onload = function () {
             allMarkers = new Array();
         }
 
+        // Function for searching matches and adding car's Id to arrayOfNumber
+        function searchMatches(obj, arr, input) {
+            for (var i = 0; i < obj.length; i++) {
+                if (obj[i].name.toLowerCase().match(input.value.toLowerCase())) {
+                    arr.push(obj[i].id);
+                }
+            }
+        }
+
+        // Function for adding cars to arrayOfCars
+        function prepareMatches(arr1, arr2, t) {
+            if (arr1.length > 0) {
+                for (var j = 0; j < arr1.length; j++) {
+                    arr2.push(cars[arr1[j]-1]);
+                }
+
+                arr1 = new Array();
+            } else {
+                t.innerHTML = 'Нет совпадений';
+            }
+        }
+
+        // Function for delete old markers and adding new markers and positions
+        function drawMatches(arr, t, s) {
+            if (arr.length > 0) {
+
+                deleteMarkers();
+
+                for (var k = 0; k < arr.length; k++) {
+                    marker(arr[k].id - 1);
+
+                    var printedDate = '';
+                    if (arr[k].pos != undefined) {
+                        printedDate = formatedDate(new Date(arr[k].pos.t))
+                    }
+                    s = s + '<b>' + arr[k].name + '</b><br>' + printedDate + '<hr>';
+                }
+
+                t.innerHTML = s;
+                s = '';
+            }
+
+            arr = new Array();
+        }
+
         // Function for read data
         fetchJSONFile('/resources/data.json', function (data) {
             cars = data.cars;
             drivers = data.drivers;
 
-            // If input is empty, all markers and positions was added
-            if (mySearchInput.value === '') {
-                for (var i = 0; i < cars.length; i++) {
-                    marker(i);
+            firstDraw(mySearchInput, cars, text, string);
 
-                    var printedDateElse = '';
-                    if (cars[i].pos != undefined) {
-                        printedDateElse = formatedDate(new Date(cars[i].pos.t))
-                    }
-                    string = string + '<b>' + cars[i].name + '</b><br><p>' + printedDateElse + '</p><hr>';
-                }
-
-                text.innerHTML = string;
-                string = '';
-            }
-
-            // Function for keyListener in input
+            // Function for keyListener in input. Search, prepare and draw matches
             mySearchInput.addEventListener('keyup', function() {
                 var arrayOfNumber = new Array();
                 var arrayOfCars = new Array();
 
-                // Searching matches and adding car's Id to arrayOfNumber
-                for (var i = 0; i < cars.length; i++) {
-                    console.log(cars);
-                    if (cars[i].name.toLowerCase().match(mySearchInput.value.toLowerCase())) {
-                        arrayOfNumber.push(cars[i].id);
-                    }
-                }
+                searchMatches(cars, arrayOfNumber, mySearchInput);
 
-                // Adding cars to arrayOfCars
-                if (arrayOfNumber.length > 0) {
-                    for (var j = 0; j < arrayOfNumber.length; j++) {
-                        arrayOfCars.push(cars[arrayOfNumber[j]-1]);
-                    }
+                prepareMatches(arrayOfNumber, arrayOfCars, text)
 
-                    arrayOfNumber = new Array();
-                } else {
-                    text.innerHTML = 'Нет совпадений';
-                }
-
-                // Delete old markers and adding new markers and positions
-                if (arrayOfCars.length > 0) {
-
-                    deleteMarkers();
-
-                    for (var k = 0; k < arrayOfCars.length; k++) {
-                        marker(arrayOfCars[k].id - 1);
-
-                        var printedDate = '';
-                        if (arrayOfCars[k].pos != undefined) {
-                            printedDate = formatedDate(new Date(arrayOfCars[k].pos.t))
-                        }
-                        string = string + '<b>' + arrayOfCars[k].name + '</b><br>' + printedDate + '<hr>';
-                    }
-
-                    text.innerHTML = string;
-                    string = '';
-                }
-
-                arrayOfCars = new Array();
+                drawMatches(arrayOfCars, text, string)
             })
         });
     }, 3000);
