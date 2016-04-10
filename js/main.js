@@ -141,7 +141,7 @@ window.onload = function () {
                     map.setView([sumLat / count, sumLng / count], 11);
                 }
 
-                ct.innerHTML = 'Показаны все объекты';
+                ct.innerHTML = '<p>Показаны все объекты</p>';
                 t.innerHTML = s;
                 s = '';
 
@@ -165,17 +165,20 @@ window.onload = function () {
         }
 
         // Function for searching matches and adding car's Id to arrayOfNumber
-        function searchMatches(obj, arr, input) {
+        function searchMatches(obj, input) {
             var result = input.value.trim();
+            var arr = new Array();
             for (var i = 0; i < obj.length; i++) {
                 if (obj[i].name.toLowerCase().match(result.toLowerCase())) {
                     arr.push(obj[i].id);
                 }
             }
+            return arr;
         }
 
         // Function for adding cars to arrayOfCars
-        function prepareMatches(arr1, arr2, t, ct) {
+        function prepareMatches(arr1, t, ct) {
+            var arr2 = new Array();
             if (arr1.length > 0) {
                 for (var j = 0; j < arr1.length; j++) {
                     arr2.push(cars[arr1[j] - 1]);
@@ -183,9 +186,10 @@ window.onload = function () {
 
                 arr1 = new Array();
             } else {
-                ct.innerHTML = 'Ничего не найдено';
-                t.innerHTML = '';
+                ct.innerHTML = '<p>Ничего не найдено</p>';
+                t.innerHTML = '<p></p>';
             }
+            return arr2;
         }
 
         // Function for delete old markers and adding new markers and positions
@@ -205,13 +209,13 @@ window.onload = function () {
                     if (arr[k].pos != undefined) {
                         printedDate = formatedDate(new Date(arr[k].pos.t))
                     }
-                    s = s + '<p><b>' + arr[k].name + '</b></p><br>' + printedDate + '<hr>';
+                    s = s + '<p><b>' + arr[k].name + '</b></p><p>' + printedDate + '</p><hr>';
                 }
 
                 if (count < 6) {
-                    ct.innerHTML = 'Показано ' + count + ' из ' + obj.length + ' объектов';
+                    ct.innerHTML = '<p>Показано ' + count + ' из ' + obj.length + ' объектов</p>';
                 } else if (count = 6) {
-                    ct.innerHTML = 'Показаны все объекты';
+                    ct.innerHTML = '<p>Показаны все объекты</p>';
                 }
                 t.innerHTML = s;
                 s = '';
@@ -247,20 +251,15 @@ window.onload = function () {
             cars = data.cars;
             drivers = data.drivers;
 
-            var array = new Array();
-
-            array = firstDraw(mySearchInput, cars, text, string, countText);
+            var array = firstDraw(mySearchInput, cars, text, string, countText);
 
             choose(array);
 
             // Function for keyListener in input. Search, prepare and draw matches
             mySearchInput.addEventListener('keyup', function () {
-                var arrayOfNumber = new Array();
-                var arrayOfCars = new Array();
+                var arrayOfNumber = searchMatches(cars, mySearchInput);
 
-                searchMatches(cars, arrayOfNumber, mySearchInput);
-
-                prepareMatches(arrayOfNumber, arrayOfCars, text, countText);
+                var arrayOfCars = prepareMatches(arrayOfNumber, text, countText);
 
                 array = drawMatches(arrayOfCars, array, text, string, countText, cars);
 
