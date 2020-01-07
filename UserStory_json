@@ -1,0 +1,172 @@
+{
+   "ResourceType": "UserStory",
+   "Id": 1014,
+   "Name": "US for improve 2.41",
+   "Description": null,
+   "StartDate": null,
+   "EndDate": null,
+   "CreateDate": "/Date(1578400746000+0100)/",
+   "ModifyDate": "/Date(1578400748000+0100)/",
+   "LastCommentDate": null,
+   "Tags": "",
+   "NumericPriority": 827,
+   "Effort": 0,
+   "EffortCompleted": 0,
+   "EffortToDo": 0,
+   "Progress": null,
+   "TimeSpent": 2,
+   "TimeRemain": 14,
+   "LastStateChangeDate": "/Date(1578400746000+0100)/",
+   "PlannedStartDate": null,
+   "PlannedEndDate": null,
+   "InitialEstimate": 0,
+   "Units": "pt",
+   "EntityType": {
+      "ResourceType": "EntityType",
+      "Id": 4,
+      "Name": "UserStory"
+   },
+   "Project": {
+      "ResourceType": "Project",
+      "Id": 1,
+      "Name": "Mobile",
+      "Process": {
+         "ResourceType": "Process",
+         "Id": 3
+      }
+   },
+   "LastEditor": {
+      "ResourceType": "GeneralUser",
+      "Id": 1,
+      "FirstName": "Walter",
+      "LastName": "White",
+      "Login": "admin"
+   },
+   "Owner": {
+      "ResourceType": "GeneralUser",
+      "Id": 1,
+      "FirstName": "Walter",
+      "LastName": "White",
+      "Login": "admin"
+   },
+   "LastCommentedUser": null,
+   "LinkedTestPlan": null,
+   "Milestone": null,
+   "Release": {
+      "ResourceType": "Release",
+      "Id": 35,
+      "Name": "3.27.09"
+   },
+   "Iteration": null,
+   "TeamIteration": null,
+   "Team": {
+      "ResourceType": "Team",
+      "Id": 13,
+      "Name": "Mobile Dev Team"
+   },
+   "Priority": {
+      "ResourceType": "Priority",
+      "Id": 5,
+      "Name": "Nice To Have",
+      "Importance": 5
+   },
+   "EntityState": {
+      "ResourceType": "EntityState",
+      "Id": 73,
+      "Name": "Release State",
+      "NumericPriority": 73
+   },
+   "ResponsibleTeam": null,
+   "Feature": {
+      "ResourceType": "Feature",
+      "Id": 327,
+      "Name": "Improve app performance"
+   },
+   "CustomFields": [
+      {
+         "Name": "Due Date",
+         "Type": "Date",
+         "Value": null
+      },
+      {
+         "Name": "AuthDate",
+         "Type": "Date",
+         "Value": null
+      },
+      {
+         "Name": "Select your pet",
+         "Type": "MultipleSelectionList",
+         "Value": "Dog"
+      },
+      {
+         "Name": "Custom Sharing",
+         "Type": "CheckBox",
+         "Value": false
+      },
+      {
+         "Name": "Needs Approval",
+         "Type": "CheckBox",
+         "Value": false
+      },
+      {
+         "Name": "Custom Field (5) text",
+         "Type": "Text",
+         "Value": null
+      },
+      {
+         "Name": "Custom field (4)",
+         "Type": "Number",
+         "Value": null
+      },
+      {
+         "Name": "Remain Developer",
+         "Type": "Number",
+         "Value": 0
+      },
+      {
+         "Name": "Feature link",
+         "Type": "URL",
+         "Value": null
+      },
+      {
+         "Name": "Link from feature",
+         "Type": "Text",
+         "Value": null
+      },
+      {
+         "Name": "Feature link 2",
+         "Type": "URL",
+         "Value": null
+      },
+      {
+         "Name": "Feature link 3",
+         "Type": "TemplatedURL",
+         "Value": null
+      },
+      {
+         "Name": "Story type",
+         "Type": "Text",
+         "Value": null
+      },
+      {
+         "Name": "Autodate",
+         "Type": "DropDown",
+         "Value": null
+      },
+      {
+         "Name": "Default or not",
+         "Type": "DropDown",
+         "Value": "Default"
+      },
+      {
+         "Name": "Build_link",
+         "Type": "Entity",
+         "Value": null
+      },
+      {
+         "Name": "Moved to TS",
+         "Type": "Date",
+         "Value": null
+      }
+   ]
+}
